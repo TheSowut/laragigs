@@ -1,3 +1,0 @@
-1) composer global require laravel/installer
-2) laravel new example-app
-3) php artisan serve
