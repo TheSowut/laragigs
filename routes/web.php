@@ -23,3 +23,10 @@ Route::get('/hello', function () {
        ->header('Content-Type', 'text/plain')
        ->header('foo', 'bar');
 });
+
+// Wildcard route
+Route::get('/posts/{id}', function($id) {
+    return response('Post ' . $id);
+})
+// Match wildcard number only
+->where('id', '[0-9]+');
