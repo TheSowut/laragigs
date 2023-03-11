@@ -18,5 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('/hello', function () {
-   return 'Hello World';
+   return response('<h1>Hello World</h1>', 404)
+//     will not render the html, due to text/plain header
+       ->header('Content-Type', 'text/plain')
+       ->header('foo', 'bar');
 });
