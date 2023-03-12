@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+//use App\Models\ListingOld;
 use App\Models\Listing;
 
 /*
@@ -15,6 +16,7 @@ use App\Models\Listing;
 |
 */
 
+
 // All Listings
 Route::get('/', function() {
 //    file with the same name must be contained within resources/views
@@ -26,36 +28,36 @@ Route::get('/', function() {
     ]);
 });
 
-// Single Listing
+// Single ListingOld
 Route::get('/listings/{id}', function($id) {
     return view('listing', [
         'listing' => Listing::find($id)
     ]);
 });
 
-Route::get('/hello', function () {
-    return response('<h1>Hello World</h1>', 404)
-//     will not render the html, due to text/plain header
-        ->header('Content-Type', 'text/plain')
-        ->header('foo', 'bar');
-});
-
-// Wildcard route
-Route::get('/posts/{id}', function ($id) {
-    return response('Post ' . $id);
-})
-// Match wildcard number only
-    ->where('id', '[0-9]+');
-
-// Debugging
-Route::get('/debug/{id}', function ($id) {
-//     Pauses and displays the property.
-    dd($id);
-//     ddd() for more info.
-    return response('The id is ' . $id);
-});
-
-Route::get('/search', function (Request $req) {
-    return response('name: ' . $req->name . ',<br> city: ' . $req->city);
-//    http://localhost:8000/search?name=123&city=456
-});
+//Route::get('/hello', function () {
+//    return response('<h1>Hello World</h1>', 404)
+////     will not render the html, due to text/plain header
+//        ->header('Content-Type', 'text/plain')
+//        ->header('foo', 'bar');
+//});
+//
+//// Wildcard route
+//Route::get('/posts/{id}', function ($id) {
+//    return response('Post ' . $id);
+//})
+//// Match wildcard number only
+//    ->where('id', '[0-9]+');
+//
+//// Debugging
+//Route::get('/debug/{id}', function ($id) {
+////     Pauses and displays the property.
+//    dd($id);
+////     ddd() for more info.
+//    return response('The id is ' . $id);
+//});
+//
+//Route::get('/search', function (Request $req) {
+//    return response('name: ' . $req->name . ',<br> city: ' . $req->city);
+////    http://localhost:8000/search?name=123&city=456
+//});
