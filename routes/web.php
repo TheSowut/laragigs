@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Listing;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,23 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+// All Listings
+Route::get('/', function() {
 //    file with the same name must be contained within resources/views
     return view('listings', [
 //        parsed inside listings.blade.php
         'heading' => 'Latest Listings',
-        'listings' => [
-            [
-                'id' => 1,
-                'title' => 'Listing One',
-                'description' => 'lorem ipsum '
-            ],
-            [
-                'id' => 2,
-                'title' => 'Listing Two',
-                'description' => 'lorem ipsum '
-            ]
-        ]
+//      class::static_method
+        'listings' => Listing::all()
+    ]);
+});
+
+// Single Listing
+Route::get('/listings/{id}', function($id) {
+    return view('listing', [
+        'listing' => Listing::find($id)
     ]);
 });
 
