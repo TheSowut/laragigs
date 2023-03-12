@@ -15,7 +15,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+//    file with the same name must be contained within resources/views
+    return view('listings', [
+//        parsed inside listings.blade.php
+        'heading' => 'Latest Listings',
+        'listings' => [
+            [
+                'id' => 1,
+                'title' => 'Listing One',
+                'description' => 'lorem ipsum '
+            ],
+            [
+                'id' => 2,
+                'title' => 'Listing Two',
+                'description' => 'lorem ipsum '
+            ]
+        ]
+    ]);
 });
 
 Route::get('/hello', function () {
