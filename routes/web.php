@@ -28,10 +28,10 @@ Route::get('/', function() {
     ]);
 });
 
-// Single ListingOld
-Route::get('/listings/{id}', function($id) {
+// Single Listing
+Route::get('/listings/{listing}', function(Listing $listing) {
     return view('listing', [
-        'listing' => Listing::find($id)
+        'listing' => $listing
     ]);
 });
 
